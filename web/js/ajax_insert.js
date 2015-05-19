@@ -57,3 +57,23 @@ $('#submitRule').click(function(event) {
         }
     });
 });
+
+$('#submitRuleException').click(function(event) {
+    event.preventDefault();
+    code = $('#code_selector').val();
+    locale = $('#locale_selector').val();
+    exception = $('#exception').val();
+    id_rule = $('#id_rule').val();
+    $.ajax({
+        url: "api/",
+        type: "GET",
+        data: "action=adding_exception&locale=" + locale + "&code=" + code + "&id_rule=" + id_rule + "&content=" + exception,
+        dataType: "html",
+        success: function(response) {
+            $("#results").html(response);
+        },
+        error: function() {
+            console.log("AJAX failure - add rule");
+        }
+    });
+});

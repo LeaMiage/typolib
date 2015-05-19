@@ -46,3 +46,4 @@
     </fieldset>
     <div id="results"><?php include VIEWS . 'rules_treeview.php'; ?></div>
 </form>
+<?php include  VIEWS . 'rule_exceptionview.php'; ?>

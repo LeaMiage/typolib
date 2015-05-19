@@ -42,4 +42,21 @@ switch ($_GET['action']) {
         $rule_exceptions = RuleException::getArrayExceptions($code, $locale);
         include VIEWS . 'rules_treeview.php';
     break;
+    case 'adding_exception':
+        $code = $_GET['code'];
+        $exception = $_GET['content'];
+        $id_rule = $_GET['id_rule'];
+
+        if ($exception != '') {
+            try {
+                $new_exception = new RuleException($code, $locale, $id_rule, $exception);
+            } catch (Exception $e) {
+            }
+        }
+
+        $rules = Rule::getArrayRules($code, $locale);
+        $ruletypes = Rule::getRulesTypeList();
+        $rule_exceptions = RuleException::getArrayExceptions($code, $locale);
+        include VIEWS . 'rules_treeview.php';
+    break;
 }
